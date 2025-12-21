@@ -19,42 +19,42 @@ interface HeaderProps {
 
 export function Header({ profile }: HeaderProps) {
   return (
-    <header className="bg-white border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-8">
-        <div className="flex items-start gap-8">
+    <header className="bg-white border-b border-gray-100">
+      <div className="max-w-4xl mx-auto px-6 py-6">
+        <div className="flex items-center gap-6">
           <ImageWithFallback
             src={profile.image}
             alt="Profile"
-            className="w-32 h-32 rounded-lg object-cover border border-gray-200"
+            className="w-24 h-24 rounded-full object-cover border-2 border-gray-200"
           />
           <div className="flex-1">
-            <h1 className="mb-2">{profile.name}</h1>
-            <p className="text-gray-700 text-lg mb-4">
+            <h1 className="text-2xl font-semibold text-gray-900 mb-1">{profile.name}</h1>
+            <p className="text-gray-600 text-sm mb-2">
               {profile.title}
             </p>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mb-4">
+            <p className="text-gray-700 text-sm mb-3 max-w-2xl">
               {profile.bio}
             </p>
-            <div className="flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-4 text-xs text-gray-500">
               <a
                 href={`mailto:${profile.links.email}`}
-                className="text-gray-600 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
+                className="hover:text-gray-900 flex items-center gap-1.5 transition-colors"
               >
-                <Mail size={16} />
-                <span>Email</span>
+                <Mail size={14} />
+                <span>{profile.links.email}</span>
               </a>
               <a
                 href={profile.links.github}
-                className="text-gray-600 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
+                className="hover:text-gray-900 flex items-center gap-1.5 transition-colors"
               >
-                <Github size={16} />
+                <Github size={14} />
                 <span>GitHub</span>
               </a>
               <a
                 href={profile.links.linkedin}
-                className="text-gray-600 hover:text-blue-600 flex items-center gap-1.5 transition-colors"
+                className="hover:text-gray-900 flex items-center gap-1.5 transition-colors"
               >
-                <Linkedin size={16} />
+                <Linkedin size={14} />
                 <span>LinkedIn</span>
               </a>
             </div>
@@ -64,4 +64,3 @@ export function Header({ profile }: HeaderProps) {
     </header>
   );
 }
-

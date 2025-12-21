@@ -5,8 +5,6 @@ interface PaperCardProps {
   authors: string;
   venue: string;
   link: string;
-  notes: string;
-  impact: string;
 }
 
 export function PaperCard({
@@ -14,22 +12,21 @@ export function PaperCard({
   authors,
   venue,
   link,
-  notes,
-  impact,
 }: PaperCardProps) {
   return (
-    <div className="bg-white p-5 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
-      <a href={link} className="text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 mb-2">
-        <span className="italic">{title}</span>
-        <ExternalLink size={14} />
-      </a>
-      <p className="text-sm text-gray-600 mb-1">{authors}</p>
-      <p className="text-xs text-gray-500 mb-3">{venue}</p>
-      <p className="text-sm text-gray-700 mb-2">{notes}</p>
-      <div className="pt-2 border-t border-gray-100">
-        <p className="text-xs text-blue-600">💡 {impact}</p>
+    <div className="border-b border-gray-100 py-3 first:pt-0 last:border-b-0">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-medium text-gray-900 mb-1">
+            <a href={link} className="hover:text-blue-600 inline-flex items-center gap-1.5 transition-colors" target="_blank" rel="noopener noreferrer">
+              <span className="italic">{title}</span>
+              <ExternalLink size={12} className="text-gray-400" />
+            </a>
+          </h3>
+          <p className="text-xs text-gray-600">{authors}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{venue}</p>
+        </div>
       </div>
     </div>
   );
 }
-

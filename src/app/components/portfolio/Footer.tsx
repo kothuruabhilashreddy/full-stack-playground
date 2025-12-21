@@ -5,11 +5,10 @@ interface FooterProps {
 
 export function Footer({ lastUpdated, message }: FooterProps) {
   return (
-    <footer className="bg-white border-t border-gray-200 mt-12">
-      <div className="max-w-6xl mx-auto px-6 py-6 text-center text-gray-500 text-sm">
+    <footer className="bg-white border-t border-gray-100 mt-8">
+      <div className="max-w-4xl mx-auto px-6 py-4 text-center text-xs text-gray-500">
         <p>Last updated: {lastUpdated} • {message}</p>
       </div>
     </footer>
   );
 }
-

@@ -9,11 +9,12 @@ export function FollowChip({ name, link }: FollowChipProps) {
   return (
     <a
       href={link}
-      className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm text-gray-700 hover:border-blue-400 hover:text-blue-600 transition-colors inline-flex items-center gap-1"
+      className="text-xs text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-1"
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {name}
-      <ExternalLink size={12} />
+      <ExternalLink size={10} className="text-gray-400" />
     </a>
   );
 }
-
