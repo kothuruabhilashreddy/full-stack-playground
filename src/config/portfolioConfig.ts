@@ -1,5 +1,7 @@
 import React from 'react';
 import { Code, Award, FileText, BookOpen, GraduationCap } from 'lucide-react';
+// @ts-ignore - Image import
+import gradPic from '../assets/grad-pic.png';
 
 // Map icon names to actual icon components
 const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -56,7 +58,7 @@ export const portfolioConfig: PortfolioConfig = {
     name: "Abhilash Reddy Kothuru",
     title: "MS Student at Stony Brook University",
     bio: "Actively seeking full-time opportunities targeted to onboard immediately.",
-    image: "https://drive.google.com/file/d/1zBttum5TS7jSfF4aFJqD5JxtCejquXEd/view",
+    image: gradPic,
     links: {
       email: "kothuruabhilashreddy@gmail.com",
       github: "https://github.com/kothuruabhilashreddy",
