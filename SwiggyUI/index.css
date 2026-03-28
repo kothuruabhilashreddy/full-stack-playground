@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 15px 40px -20px rgba(40, 44, 63, .15)
+}
+
+.nav-items  > ul {
+    display: flex;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    list-style-type: none;
+}
+
+.nav-items > ul > li {
+    padding:5px 10px;
+    margin: 0px 15px
+}
+
+.restaurants {
+    display: flex;
+    flex-direction: row;
+    justify-content:start;
+    flex-wrap: wrap;
+}
+
+.restaurant-card {
+    margin: 20px 0px;
+    display: grid;
+    transition: 0.05s;
+    cursor: pointer;
+    gap: 12px;
+    grid-auto-flow: row;
+    justify-content: stretch;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.card-logo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+}
+
+.card-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
