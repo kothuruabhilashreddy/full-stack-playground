@@ -1,0 +1,73 @@
+var resultList = document.querySelector('.images-list');
+var urlInput = document.querySelector('input[id=searchInput]')
+var imagesList = [];
+
+apiCallBack = function(xhr, callback) {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+        if (xhr.status != 200) {
+            let message = xhr.status + ":" + xhr.statusText + ":"
+                    + xhr.responseText;
+            alert(message);
+            throw 'API call returned bad code: ' + xhr.status;
+        }
+        let response = xhr.responseText ? JSON.parse(xhr.responseText)
+                : null;
+        if (callback) {
+            callback(response);
+        }
+    }
+}
+buildImageContainer = function(imgData) {
+    var imgContainer = document.createElement('div');
+    imgContainer.classList.add('image-container');
+    imgContainer.innerHTML = `<img src="${imgData.imageUrl}" alt="${imgData.alt}">
+                                          <div class="image-info">
+                                            <h3>${imgData.title}</h3>
+                                            <div class="image-actions">
+                                              <button>SVG</button>
+                                              <button>⬇️</button>
+                                              <button>ℹ️</button>
+                                            </div>
+                                          </div>`;
+    return imgContainer
+}
+
+updateList = function(response) {
+    resultList.innerHTML = '';
+    imagesList = response
+    for (var i = 0; i < imagesList['imageURLs'].length; i++) {
+        var tempDiv = document.createElement('div');
+        resultList.appendChild(buildImageContainer(imagesList['imageURLs'][i]));
+    }
+}
+
+makeApiCall = function(url, method, obj, callback) {
+    let xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onreadystatechange = apiCallBack.bind(null, xhr, callback);
+    xhr.send(obj ? obj instanceof FormData || obj.constructor == String ? obj : JSON.stringify(obj) : null);
+}
+
+document.querySelector('.search-container button').addEventListener("click", function(event) {
+    event.preventDefault();
+    makeApiCall('/main?url=' + urlInput.value, 'POST', null, updateList);
+});
+
+function setActiveTab(selectedTab) {
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    selectedTab.classList.add('active');
+    var activeTab = selectedTab.id;
+    if (activeTab === "1") {
+        updateList(imagesList);
+    } else if (activeTab === "2") {
+        var currentUrl = imagesList['url'];
+        var currentPageImages = imagesList.imageURLs.filter(img => img.srcPageUrl === currentUrl);
+        updateList({...imagesList, imageURLs: currentPageImages});
+    } else if (activeTab === "3") {
+        var currentUrl = imagesList['url']
+        var currentPageImages = imagesList.imageURLs.filter(img => img.srcPageUrl !== currentUrl);
+        updateList({...imagesList, imageURLs: currentPageImages});
+    }
+}

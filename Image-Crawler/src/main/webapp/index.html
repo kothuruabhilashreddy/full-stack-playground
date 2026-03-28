@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="flex flex-col min-h-screen">
+		<div class="main-container text-primary bg-secondary">
+			<div class="title">Image Crawler</div>
+			<div class="search-box">
+				<div class="search-container">
+					<input type="text" id="searchInput" placeholder="Place your URL...">
+					<button id="searchButton" disabled>Search</button>
+				</div>
+				<div class="validation-error hidden" id="searchError">There is some issue accessing the website 
+					please enter correct url or try again later</div>
+			</div>
+			
+		</div>
+		<div class="secondary-container flex hidden" id="secondaryContainer">
+			<div class="result-container flex">
+				<div class="navbar">
+					<div class="nav-item active" id ="1" onclick="setActiveTab(this)">All Images</div>
+					<div class="nav-item" id="2" onclick="setActiveTab(this)">Current Page Images</div>
+					<div class="nav-item" id="3" onclick="setActiveTab(this)">Subpage Images</div>
+					<div class="nav-item" id="4" onclick="setActiveTab(this)">Logos</div>
+				</div>
+				<div class="loader-container hidden" id="loader-body">
+					<div class="loader-background">
+						<div class="loader">
+						</div>
+					</div>
+				</div>
+				<div class="images-list"></div>
+			</div>
+		</div>
+	</div>
+	<script src="./scripts.js"></script>
+</body>
+
+</html>
