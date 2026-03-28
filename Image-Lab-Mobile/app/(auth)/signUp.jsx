@@ -6,10 +6,10 @@ import { db } from "./config";
 import { saveUserData } from "./auth";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("akothuru@cs.stonybrook.edu");
-  const [password, setPassword] = useState("12345678");
-  const [firstName, setFirstname] = useState("Abhilash Reddy");
-  const [lastName, setLastName] = useState("Kothuru");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState("patient");
 

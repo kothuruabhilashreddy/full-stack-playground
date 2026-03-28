@@ -1,50 +1,32 @@
-# Welcome to your Expo app 👋
+# Uber-Style Clone (Hands-On)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A **React Native / Expo** learning project that implements a ride-hailing **style** mobile experience: onboarding carousel, sign-in and sign-up screens, and a tabbed main area (home, rides, chat, profile). This is a **UI and navigation practice exercise**, not a production backend or live maps product.
 
-## Get started
+## Stack
 
-1. Install dependencies
+- **Expo** (~51) with **Expo Router** (file-based routing under `app/`)
+- **TypeScript**
+- **NativeWind** (Tailwind-style classes for React Native)
+- **React Native** 0.74
 
-   ```bash
-   npm install
-   ```
+## What you will find
 
-2. Start the app
+- `(auth)/` — welcome, sign-in, sign-up layouts and forms
+- `(root)/(tabs)/` — tab screens: `home`, `rides`, `chat`, `profile`
+- Shared UI in `components/` (e.g. `CustomButton`, `InputField`, `OAuth` stub)
+- Static assets and copy under `constants/` (onboarding slides, icons)
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run locally
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Use Expo Go, iOS Simulator, Android Emulator, or a [development build](https://docs.expo.dev/develop/development-builds/introduction/) depending on your needs.
 
-## Learn more
+## Scripts
 
-To learn more about developing your project with Expo, look at the following resources:
+- `npm start` — dev server  
+- `npm run reset-project` — Expo starter reset utility (moves example app aside)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

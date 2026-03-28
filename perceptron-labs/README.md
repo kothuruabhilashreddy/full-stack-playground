@@ -1,47 +1,53 @@
-# Perceptron-Labs Assignment
+# Perceptron Labs–Style Forum
 
-## Full-stack project
-Create a forum where users can submit ideas for future simulations that our company might run. The forum should allow users to submit their name and a comment, which will then be published to an ongoing thread. Visitors to the site should be able to upvote these ideas Reddit-style, indicating their support for each idea. The forum must display ideas sorted by the number of upvotes, with the most upvoted ideas at the top. In case of a tie, ideas should be sorted by the time that they were published, with the most recent ones appearing first. The design should closely follow the style of our existing [website](http://perceptron.so) (you can also refer to our [blog](http://perceptron.so/blog) for design cues).
+Full-stack **simulation ideas forum**: users submit a name, title, and comment; visitors **upvote** ideas **Reddit-style**. Ideas are sorted by vote count, then by recency. Data is **persistent** (SQLite via Prisma), and **Redis** backs shared counters / synchronization so multiple app instances behave consistently when you run several dev servers on different ports.
 
-The data should be persistent (don’t store posts in browser state – think SQLite or even a .txt file!)
+## Stack
 
-## Tech Stack Used
+- **Next.js** (App Router)
+- **Prisma** + **SQLite**
+- **Redis** (`ioredis`)
+- **Tailwind CSS**
 
-1. Next.JS
-2. Redis
-3. SQLite
-4. Prisma
-5. Tailwind CSS
+## Setup
 
+### 1. Redis
 
-## How to setup ?
+Run Redis locally (default port **6379**), for example:
 
-### First: Redis setup
+```bash
+docker run -d -p 6379:6379 redis:alpine
+```
 
-- Install redis locally or use docker to run redis on default port 6379
+Optional: set `REDIS_URL` (see `.env.example`). If unset, the app uses `redis://127.0.0.1:6379`.
 
-### Second: Setup project locally
+### 2. Environment and database
 
-- clone the github repo
-- npm i 
-- npx prisma migrate dev --name init
+```bash
+cp .env.example .env
+npm install
+npx prisma migrate dev
+```
 
-## Start the project
+### 3. Development
 
-### Before proceeding to the next step, make sure the redis server is running and db is connected
+```bash
+npm run dev
+```
 
-- docker ps (To check the active containers if you are using docker to run redis)
-- npx prisma studio (To run SQLite DB on server)
+To simulate multiple users, run additional instances on other ports (examples):
 
-### The project is capable to handling servers running parallely locally
+- **PowerShell:** `$env:PORT=4000; npm run dev`
+- **cmd:** `set PORT=4000 && npm run dev`
+- **bash:** `PORT=4000 npm run dev`
 
-To observe the behaviour, the application need to run in multiple ports parallely where each port is a different user.
+Reload each instance to see vote changes propagate according to your Redis-backed logic.
 
-All the actions done by a user are replicated in other user interface upon reloading the screen
+### Useful commands
 
-### Run the below commands separately in different terminals
+- `npx prisma studio` — browse SQLite data  
+- `npm run build` / `npm start` — production build and serve
 
-- npm run dev
-- set PORT=4000 && npm run dev
-- set PORT=5000 && npm run dev
+## Brief assignment context
 
+This repo implements a take-home–style brief: forum for future simulation ideas, sorted by votes, with design cues aligned to a research-style landing page.

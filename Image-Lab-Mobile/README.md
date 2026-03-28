@@ -1,50 +1,62 @@
-# Welcome to your Expo app 👋
+# Image Lab (Mobile)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Cross-platform **React Expo** app for camera-oriented flows, user authentication, and Firestore-backed data. Built to explore React Native, Expo Router, Firebase, and media-related native modules.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Email/password sign-up and sign-in with **Firebase Auth**
+- **Cloud Firestore** for user profile data
+- **Expo Router** file-based navigation (`app/`): auth stack and main app areas
+- Camera-related screens and image review flows (see `app/(app)/`)
+- **NativeWind** (Tailwind-style) styling
 
-   ```bash
-   npm install
-   ```
+## Prerequisites
 
-2. Start the app
+- Node.js 18+ (LTS recommended)
+- npm or yarn
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) / `npx expo`
+- A [Firebase](https://firebase.google.com/) project with Authentication (Email/Password) and Firestore enabled
 
-   ```bash
-    npx expo start
-   ```
+## Configuration
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Firebase settings are **not** hardcoded. Copy the example env file and fill in values from the Firebase console (Project settings → Your apps → Web app config).
 
 ```bash
-npm run reset-project
+cp .env.example .env
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Required variables (all prefixed with `EXPO_PUBLIC_` so Expo can inline them at build time):
 
-## Learn more
+- `EXPO_PUBLIC_FIREBASE_API_KEY`
+- `EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `EXPO_PUBLIC_FIREBASE_PROJECT_ID`
+- `EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `EXPO_PUBLIC_FIREBASE_APP_ID`
 
-To learn more about developing your project with Expo, look at the following resources:
+See [Expo environment variables](https://docs.expo.dev/guides/environment-variables/) for details.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Run locally
 
-## Join the community
+```bash
+npm install
+npx expo start
+```
 
-Join our community of developers creating universal apps.
+Then open in Expo Go, an emulator, or a development build as usual.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Scripts
+
+| Command | Purpose |
+|--------|---------|
+| `npm start` | Start Metro / Expo dev server |
+| `npm run android` | Open on Android |
+| `npm run ios` | Open on iOS |
+| `npm run web` | Web target |
+| `npm run lint` | ESLint |
+
+## Project layout (high level)
+
+- `app/(auth)/` — sign-in, sign-up, Firebase `config`
+- `app/(app)/` — post-auth screens (home, camera, review, etc.)
+- `app/_layout.jsx` — root layout

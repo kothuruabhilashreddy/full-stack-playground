@@ -1,8 +1,20 @@
-# Abhilash Reddy Portfolio
+# Personal Portfolio (React)
 
-This repository was created to deploy my portfolio. It showcases my technical skills and projects highlighting my achievements and my abilities as a developer. Feel free to visit this page [https://kothuruabhilashreddy.github.io/Portfolio/](https://kothuruabhilashreddy.github.io/Portfolio/).
+Production-oriented **personal portfolio** deployed to **GitHub Pages**. Presents projects, skills, and contact affordances with smooth UI touches (motion, responsive layout).
 
-## Tech Stack Used
+**Live site:** [https://kothuruabhilashreddy.github.io/Portfolio/](https://kothuruabhilashreddy.github.io/Portfolio/)
 
-### `React JS`
-### `Tailwind CSS`
+## Stack
+
+- **React** (Create React App)
+- **Tailwind CSS**
+- **Framer Motion**
+- **react-icons**
+- **gh-pages** for deployment
+
+## Local development
+
+```bash
+npm install
+npm start
+```

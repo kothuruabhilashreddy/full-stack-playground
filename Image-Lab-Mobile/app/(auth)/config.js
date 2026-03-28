@@ -1,33 +1,34 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth/";
 
-// eslint-disable-next-line prettier/prettier
+function readFirebaseEnv() {
+  const keys = {
+    apiKey: "EXPO_PUBLIC_FIREBASE_API_KEY",
+    authDomain: "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN",
+    projectId: "EXPO_PUBLIC_FIREBASE_PROJECT_ID",
+    storageBucket: "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET",
+    messagingSenderId: "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
+    appId: "EXPO_PUBLIC_FIREBASE_APP_ID",
+  };
+  const out = {};
+  const missing = [];
+  for (const [prop, envName] of Object.entries(keys)) {
+    const value = process.env[envName];
+    if (!value) missing.push(envName);
+    out[prop] = value;
+  }
+  if (missing.length) {
+    throw new Error(
+      `Missing Firebase env vars: ${missing.join(", ")}. Copy .env.example to .env in the project root and add values from the Firebase console (Project settings → Your apps).`
+    );
+  }
+  return out;
+}
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDWvvdDQ-mx3-SdoK-mmeXPLzKR3gEahs8",
-  authDomain: "image-lab-2b52f.firebaseapp.com",
-  projectId: "image-lab-2b52f",
-  storageBucket: "image-lab-2b52f.appspot.com",
-  messagingSenderId: "846302281857",
-  appId: "1:846302281857:web:c0664cae69b655b4978d80",
-};
-
-// Initialize Firebase
+const firebaseConfig = readFirebaseEnv();
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// const persistenceAuth = initializeAuth(app, {
-//   persistence: getReactNativePersistence(AsyncStorage),
-// });
-
 const db = getFirestore(app);
-
 const auth = getAuth(app);
 
 export { db, app, auth };

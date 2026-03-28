@@ -1,0 +1,6 @@
+# Repo root — avoid accidental commits of secrets or local env files
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
