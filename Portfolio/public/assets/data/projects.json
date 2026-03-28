@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Exploring places....",
+        "text": "I enjoy travelling. Every quarter, I plan a trip with my family to visit famous places, eat delicious food, meet locals, and return with fond memories.",
+        "image" : "/src/assets/img/about/2.png"
+    },
+    {
+        "title": "Now I'm a Graduate :)",
+        "subtitle": "Computer Science graduate 2021",
+        "text": "I graduated in 2021 with a major in computer science.",
+        "image" : "src/assets/img/about/1.jpeg"
+    },
+    {
+        "title": "The Real Adventure!",
+        "text": "I joined Pega Systems as an Associate Applications Engineer. ",
+        "image" : "location"
+    }
+]

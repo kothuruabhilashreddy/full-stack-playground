@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .box {
+    @apply sm:h-[150px] sm:w-[150px] xs:h-[100px] xs:w-[100px] text-center border-2 border-white sm:py-[50px] xs:py-[25px] px-0 text-white bg-black text-3xl box-border absolute [transition:all_1s];
+  }
+  
+}

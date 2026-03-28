@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Exploring places /\\",
+        "text": "I'm fond of travelling. I often visit places which put me out of my comfort to experience the real meaning of life",
+        "image" : "/img/about/1.png"
+    },
+    {
+        "title": "Now I'm a Graduate :)",
+        "text": "I graduated in 2021 with a major in computer science.",
+        "image" : "/img/about/2.png"
+    },
+    {
+        "title": "The Journey continues.....",
+        "text": "I started working in the IT sector in a full time role as an Associate Applications Engineer at Pega Systems.",
+        "image" : "/img/about/3.png"
+    }
+]
